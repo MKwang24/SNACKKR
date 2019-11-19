@@ -48,10 +48,10 @@
 				<input type = "checkbox" name = "Seniors" value = "Senior" > Seniors<br>
 				<input type = "checkbox" name = "Athletes" value = "Athletes" > Athletes<br>
 				<br />
-				<input type="submit"class="btn btn-info" value="Enter">
 			</form>
 			</fieldset>
 			</h3>
+			<li><a href = "foodAfterRecommend.jsp">Enter</a></li>
 			</div>
 		</div>
 	</div>
