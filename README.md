@@ -13,7 +13,7 @@ Second Submission: Initial functions implementations and User Interface design
 
 -Front-End User interface DONE by Yichun, Sijia, Jiahua, Jiaru
   
-Old repository can be found by this link: https://github.com/MKwang24/MIE350
+Old repository can be found by this link: https://github.com/MKwang24/MIE350 AND https://github.com/MKwang24/MIE350_SNACKKR
   
 Third Submission: More function implementations and User Interface design
   
