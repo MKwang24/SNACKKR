@@ -1,0 +1,120 @@
+package com.mie.model;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Recipe {
+	private int recipeid;
+	private String recipeName;
+	private String groupsFitted;
+	private String meal;
+	private int prepTime;
+	private int cookTime;
+	private int totalTime;
+	private int serving;
+	private HashMap<Integer, String> steps;
+	private HashMap<String, Double> ingreadiants;
+	
+	public int getRecipeid(){
+		return recipeid;
+	}
+	
+	public int getServing(){
+		return serving;
+	}
+	
+	public String getRecipeName(){
+		return recipeName;
+	}
+	
+	public String getGroupsFitted(){
+		return groupsFitted;
+	}
+	
+	public String getMeal(){
+		return meal;
+	}
+	
+	public int getPrepTime(){
+		return prepTime;
+	}
+	
+	public int getCookTime(){
+		return cookTime;
+	}
+	
+	public int getTotalTime(){
+		return totalTime;
+	}
+	
+	public String getStepsString(){
+		String s  = "";
+		for ( int key : steps.keySet()){
+			s += String.valueOf(key) + " " +steps.get(key) + "\n" ; 
+		}
+		System.out.print(s);
+		return s;
+	}
+	public HashMap<Integer, String> getSteps(){
+		return steps;
+	}
+	
+	public HashMap<String, Double> getIngreadiants(){
+		return ingreadiants;
+	}
+	
+	public String getIngreadiantsString(){
+		String s  = "";
+		for ( String key : ingreadiants.keySet()){
+			s += "<br>"+key + " " + String.valueOf(ingreadiants.get(key) + "'<br>'"); 
+		}
+		System.out.print(s);
+		return s;
+	}
+	
+	public void setRecipeid( int recipeid ){
+		this.recipeid = recipeid;
+	}
+	
+	public void setRecipeName( String recipeName ){
+		this.recipeName = recipeName;
+	}
+	
+	public void setGroupsFitted( String groups ){
+		this.groupsFitted = groups;
+	}
+	
+	public void setMeal( String meal ){
+		this.meal = meal;
+	}
+	
+	public void setPrepTime( int PrepTime ){
+		this.prepTime = PrepTime;
+	}
+	
+	public void setCookTime( int CookTime ){
+		this.cookTime = CookTime;
+	}
+	
+	public void setTotalTime( int TotalTime ){
+		this.totalTime = TotalTime;
+	}
+	
+	public void setSteps(HashMap<Integer, String> steps){
+		this.steps = steps;
+	}
+	
+	public void setIngreadiants(HashMap<String, Double> ingreadiants){
+		this.ingreadiants = ingreadiants;
+	}
+	
+	public void setServing(int servings){
+		this.serving = servings;
+	}
+	
+	public String toString(){
+		return this.recipeName;
+	}
+	
+
+}

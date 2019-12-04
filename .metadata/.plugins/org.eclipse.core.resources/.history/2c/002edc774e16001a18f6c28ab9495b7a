@@ -1,0 +1,152 @@
+package com.mie.controller;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mie.model.*;
+import com.mie.dao.*;
+
+
+/**
+ * Servlet implementation for LoginController.
+ * 
+ * This class handles the login servlet and assigns session attributes for users
+ * who succesfully log into the system.
+ */
+public class EditAnAccountcontroller extends HttpServlet {
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response){
+		try {
+				System.out.println("\n edit an account");
+				/**
+				 * Retrieve the entered username and password from the login.jsp form.
+				 */
+				User member = new User();
+				member.setNickname(request.getParameter("un"));
+				member.setPassword(request.getParameter("pw"));
+				member.setEmail(request.getParameter("e"));
+				member.setFirstName(request.getParameter("fn"));
+				member.setLastName(request.getParameter("ln"));
+				member.setYearofBirth(Integer.valueOf(request.getParameter("age")));
+				member.setsex(request.getParameter("sex"));
+				member.setheight(Integer.valueOf(request.getParameter("h")));
+				member.setweight(Integer.valueOf(request.getParameter("w")));
+				List hc = new ArrayList<String>();
+				//list to store recipes from db 
+				List obj = new ArrayList<String>();
+				//Patients=1, Teenagers=2, Adults=3, Senior=4, Athletes=5
+				if (request.getParameter("Normal") != null){
+					hc.add("Normal");
+				}
+				if (request.getParameter("Underweight") != null){
+					hc.add("Underweight");
+				}
+				if (request.getParameter("Slightly_Overweight") != null){
+					hc.add("Slightly_Overweight");
+				}
+				if (request.getParameter("Overweight") != null){
+					hc.add("Overweight");
+				}
+				if (request.getParameter("Lose_Weight") != null){
+					obj.add("Lose_Weight");
+				}
+				if (request.getParameter("Gain_Muscle") != null){
+					obj.add("Gain_Muscle");
+				}
+				if (request.getParameter("Keep_Health") != null){
+					obj.add("Keep_Healthy");
+				}
+				String objString = obj.toString().replaceAll(" ", "");
+		
+				String hcString = hc.toString().replaceAll(" ", "");
+		
+				member.setobjectives(objString);
+				System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+				System.out.print(objString);
+				member.sethealthcondition(hcString);
+				System.out.println("hiiiiiii");
+				System.out.print(hc);
+				System.out.print(member);
+//		try {
+			/**
+			 * Try to see if the member can log in.
+			 */
+				boolean result = UserDao.updateUser(member);
+				System.out.print("\n"+result);  
+	
+				/**
+				 * If the isValid value is true, assign session attributes to the
+				 * current member.
+				 */
+				if (result) {
+					System.out.println(String.valueOf(member.getobjectives()));
+					HttpSession session = request.getSession(true);
+					session.setAttribute("currentSessionmember", member);
+					session.setAttribute("email", member.getEmail());
+					session.setAttribute("firstname", member.getFirstName());
+					session.setAttribute("lastname", member.getLastName());
+					session.setAttribute("nickname", member.getNickname());
+					session.setAttribute("yearofbirth", String.valueOf(member.getYearofBirth()));
+					session.setAttribute("sex", member.getsex());
+					session.setAttribute("height", String.valueOf(member.getheight()));
+					session.setAttribute("weight", String.valueOf(member.getweight()));
+					session.setAttribute("health", "hiiiiii");
+					session.setAttribute("objective", String.valueOf(member.getobjectives()));
+					/**
+					 * Redirect to the members-only home page.
+					 */
+					System.out.println("to: homepage.jsp ;");
+					response.sendRedirect("memberLogged.jsp");
+					System.out.println("\n after: homepage.jsp ;");
+
+				} else {
+				/**
+				 * Otherwise, redirect the user to the invalid login page and
+				 * ask them to log in again with the proper credentials.
+				 */
+				response.sendRedirect("invalidLogin.jsp");
+			}
+		}
+		catch (NumberFormatException e || SQLException ex || ServletException se || IOException io ) {
+			/**
+			 * Print out any errors.
+			 */
+			response.sendRedirect("index.jsp");
+			System.out.println(e);
+		}
+	}
+}
+	
+//		catch (SQLException e ) {
+//			/**
+//			 * Print out any errors.
+//			 */
+//			response.sendRedirect("index.jsp");
+//			System.out.println(e);
+//			
+//		}catch (ServletException e ) {
+//			/**
+//			 * Print out any errors.
+//			 */
+//			response.sendRedirect("index.jsp");
+//			System.out.println(e);
+//		}catch ( java.io.IOException e ) {
+//			/**
+//			 * Print out any errors.
+//			 */
+//			response.sendRedirect("index.jsp");
+//			System.out.println(e);
+////		}
+//	}
+//}
+
+		
+		

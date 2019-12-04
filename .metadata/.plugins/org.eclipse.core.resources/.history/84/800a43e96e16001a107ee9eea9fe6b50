@@ -1,0 +1,136 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR" import="com.mie.model.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
+<!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("email") == null) {
+		response.sendRedirect("login.jsp");
+	}
+%>
+
+<head>
+<title>MIE350 SNACKKR Web App - Members-Only Home Page<</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Date Picker Javascript -->
+<!-- https://jqueryui.com/datepicker/ -->
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+</head>
+<body>
+	<%
+		Member member = (Member) session.getAttribute("currentSessionUser");
+		System.out.print("sdf");
+	
+		String nickname = (String) session.getAttribute("nickname");
+		String email = (String) session.getAttribute("email");
+		String firstname = (String) session.getAttribute("firstname");
+		String lastname = (String) session.getAttribute("lastname");
+	%>
+	<%@ include file="navbar_loggedin.jsp"%>
+	<style>
+	body{
+		background-image: url('img/50.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
+	<div class="container-fluid text-center">
+			<div class="row content">
+				<div class="col-sm-12 text-center">
+				<span style = "color: blue;">Successfully change! You can keep adding your intake, deleting your intake, or display the history of the whole intakes you have in your account</span>>
+				<h1>Record your food intake!</h1>
+				
+				<!-- should add action here, to a member controller I think -->
+				<h3>Add Your Intake Here</h3>
+				<form action = "RecordFoodIntakeController" style = "color:black;">
+					Your Email (cannot change): <br /><input type = "text" name = "e" value = <%=email %> readonly /><br>
+					<br />
+					FoodName: <br /><input type = "text" name = "f" required /><br>
+					<br />
+					Meal: <br /><input type = "text" name = "m" required /><br>
+					<br />
+					Date: (MM/DD/YYYY)<br /><input type = "date" name = "d" required/><br>
+					<span style = "color: red;"><b>You must fill in all parts here!</b></span>
+					<br /><input type="submit"class="btn btn-info" name = "add" value="Add Intake">
+				</form>
+				
+				<h3>Delete Your Intake Here</h3>
+				<form action = "DeleteFoodIntakeController" style = "color:black;">
+					Your Email (cannot change): <br /><input type = "text" name = "e" value = <%=email %> readonly /><br>
+					<br />
+					Date: (MM/DD/YYYY)<br /><input type = "date" name = "d" required/><br>
+					<br />
+					Meal: <br /><input type = "text" name = "m" required /><br>
+					<span style = "color: red;"><b>You must fill in all parts here!</b></span>
+					<br /><input type="submit"class="btn btn-info" name = "add" value="Delete Intake">
+				</form>
+				
+				
+				<h3>Display the Intake History for you:</h3>
+				<center>
+					<form method="POST" action='IntakeResultController' name="intakeresult">
+						Email: <input type="text" name="email"
+							value="<c:out value = "${intake.searchword}" default = "<%=email %>"/>"><input
+							type="submit" class="btn btn-info" value="Display" />
+					</form>
+				</center>
+				<br /><br />
+				
+				<h4>Your History Food Intake Show in the Following Table: </h4>
+				<center>
+				<table border=1 class="sortable">
+						<thead>
+							<tr>
+								<th> Email </th>
+								<th> Date </th>
+								<th> Meal  </th>
+								<th> Foods </th>
+						
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${intakes}" var="intake">	
+								<tr>
+									<td align="center"><c:out
+											value=" ${intake.getEmail()} " /></td>
+									<td align="center"><c:out
+											value=" ${intake.getDate()} " /></td>
+									<td align="center"><c:out 
+											value=" ${intake.getMeal()} " /></td>
+									<td align="center"><c:out 
+											value=" ${intake.getFoods()} " /></td>																
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					</center>
+				</div>
+			</div>
+		</div>
+
+	<%@ include file="footer.jsp"%>
+
+</body>
+</html>
+
