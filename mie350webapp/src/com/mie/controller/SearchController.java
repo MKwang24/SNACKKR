@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,8 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mie.dao.FoodDao;
-import com.mie.dao.StudentDao;
-import com.mie.model.Student;
+
+import com.mie.model.Food;
+
 
 public class SearchController extends HttpServlet {
 	/**
@@ -50,8 +52,9 @@ public class SearchController extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher(SEARCH_USER);
 
 		request.setAttribute("keyword", keyword);
-
+		
 		request.setAttribute("foods", dao.getFoodByKeyword(keyword));
+		
 		//Check 
 //		System.out.println(request.getAttribute("Food"));
 //		System.out.println(dao.getFoodByKeyword(keyword));

@@ -13,20 +13,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="index.jsp"><b>Home</b></a></li>
 				<li><a href="about.jsp"><b>About</b></a></li>
-				<li><a href="food.jsp"><b>Food</b></a></li>
 				<li><a href="searchFood.jsp"><b>Search Food</b></a></li>
-				<li><a href="Recipes.jsp"><b>Recipes</b></a></li>
-				<li><a href="searchARecipe.jsp"><b>Search A Recipe</b></a></li>
-				<li class="dropdown"><a data-toggle="dropdown"
-					href="helpful_links.jsp"><b>Other Links</b><b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="sample_html.jsp">Sample HTML Tags</a></li>
-						<li><a href="helpful_links.jsp">Other Helpful Links</a></li>
-						<li><a href="http://www.w3schools.com/html/default.asp">HTML
-								Tutorial</a></li>
-						<li><a href="http://www.w3schools.com/bootstrap/">BootStrap
-								CSS Tutorial</a></li>
-					</ul></li>
 				<li><a href="contact.jsp"><b>Contact</b></a></li>
 			</ul>
 			<!-- The following code can be added to include a Login button to the right-hand side of the navbar-->
@@ -38,3 +25,5 @@
 		</div>
 	</div>
 </nav>
+
+

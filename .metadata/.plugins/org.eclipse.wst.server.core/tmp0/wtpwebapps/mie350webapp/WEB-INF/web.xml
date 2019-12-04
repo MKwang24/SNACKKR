@@ -51,7 +51,7 @@
 		<session-timeout>15</session-timeout>
 	</session-config>
 	<servlet>
-		<description>description</description>
+		<description></description>
 		<display-name>CreateAnAccountController</display-name>
 		<servlet-name>CreateAnAccountController</servlet-name>
 		<servlet-class>com.mie.controller.CreateAnAccountController</servlet-class>
@@ -61,17 +61,37 @@
 		<url-pattern>/CreateAnAccountController</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<description>description</description>
-		<display-name>AddController</display-name>
-		<servlet-name>AddController</servlet-name>
-		<servlet-class>com.mie.controller.AddController</servlet-class>
+		<description></description>
+		<display-name>EditAnAccountcontroller</display-name>
+		<servlet-name>EditAnAccountcontroller</servlet-name>
+		<servlet-class>com.mie.controller.EditAnAccountcontroller</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>AddController</servlet-name>
-		<url-pattern>/AddController</url-pattern>
+		<servlet-name>EditAnAccountcontroller</servlet-name>
+		<url-pattern>/EditAnAccountcontroller</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<description>description</description>
+		<description></description>
+		<display-name>RecommendRecipeController</display-name>
+		<servlet-name>RecommendRecipeController</servlet-name>
+		<servlet-class>com.mie.controller.RecommendRecipeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RecommendRecipeController</servlet-name>
+		<url-pattern>/RecommendRecipeController</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>RecordFoodIntakeController</display-name>
+		<servlet-name>RecordFoodIntakeController</servlet-name>
+		<servlet-class>com.mie.controller.RecordFoodIntakeController</servlet-class>
+
+	</servlet><servlet-mapping>
+		<servlet-name>RecordFoodIntakeController</servlet-name>
+		<url-pattern>/RecordFoodIntakeController</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
 		<display-name>AddCalculateController</display-name>
 		<servlet-name>AddCalculateController</servlet-name>
 		<servlet-class>com.mie.controller.AddCalculateController</servlet-class>
@@ -81,13 +101,33 @@
 		<url-pattern>/AddCalculateController</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<description>description</description>
-		<display-name>EditAnAccountcontroller</display-name>
-		<servlet-name>EditAnAccountcontroller</servlet-name>
-		<servlet-class>com.mie.controller.EditAnAccountcontroller</servlet-class>
+		<description></description>
+		<display-name>AddController</display-name>
+		<servlet-name>AddController</servlet-name>
+		<servlet-class>com.mie.controller.AddController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>EditAnAccountcontroller</servlet-name>
-		<url-pattern>/EditAnAccountcontroller</url-pattern>
+		<servlet-name>AddController</servlet-name>
+		<url-pattern>/AddController</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>IntakeResultController</display-name>
+		<servlet-name>IntakeResultController</servlet-name>
+		<servlet-class>com.mie.controller.IntakeResultController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IntakeResultController</servlet-name>
+		<url-pattern>/IntakeResultController</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>DeleteFoodIntakeController</display-name>
+		<servlet-name>DeleteFoodIntakeController</servlet-name>
+		<servlet-class>com.mie.controller.DeleteFoodIntakeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteFoodIntakeController</servlet-name>
+		<url-pattern>/DeleteFoodIntakeController</url-pattern>
 	</servlet-mapping>
 </web-app>

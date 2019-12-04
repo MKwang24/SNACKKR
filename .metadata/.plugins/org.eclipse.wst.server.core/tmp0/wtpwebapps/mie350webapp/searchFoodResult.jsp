@@ -28,16 +28,31 @@
 <body>
 
 	<%@ include file="navbar.jsp"%>
+	<style>
+	body{
+		background-image: url('img/71.png');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
 
 
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
-			<div class="col-sm-8 text-left">
-				<h1>Search A Food - Results</h1>
+			<div class="col-sm-12 text-center">
+				<h1>Search Your Food</h1>
+				Type in any keyword to search for food information (Food Name) that matches the keyword. <Br />
+				<Br />
+				<center>
+					<form method="POST" action='SearchController' name="frmAddUser">
+						Keyword: <input type="text" name="keyword"
+							value="<c:out value="${food.searchword}" />"><input
+							type="submit" class="btn btn-info" value="Submit" />
+					</form>
+				</center>
 
 				The following food items match your search keyword "<b><font
 					color=red><%=request.getAttribute("keyword")%></font></b>":<br> <br>
@@ -88,17 +103,16 @@
 						</tbody>
 					</table>
 				</center>
-			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
+				
 			</div>
 		</div>
 	</div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<%@ include file="footer.jsp"%>
 
 
 </body>
 </html>
+
 
 

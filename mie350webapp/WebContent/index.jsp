@@ -32,7 +32,7 @@
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-12 text-center">
-				<h3><b>SNACKKR</b></h3>
+				<h2><b>SNACKKR</b></h2>
 				<p>Authors: Stella Strawberry, Nancy Nachos, Amanda Avocado, Coco Coffee, Kelly Kiwi, Kevin Krab, Ronnie Rice</p>			
 				<br />
 					<a href = "about.jsp">
@@ -41,14 +41,10 @@
 					<a href = "searchFood.jsp">
 						<img src = "img/searchfood.jpg" alt = "search food" width = 20%>
 					</a>
-					<br />
 					<a href = "contact.jsp">
 						<img src = "img/contact.jpg" alt = "contact" width = 20%>
 					</a>
-					<a href = "searchArecipe.jsp">
-						<img src = "img/searchrecipes.jpg" alt = "search a recipe" width = 20%>
-					</a>
-				<h3><b>We are ready to help you with healthy diet!</b></h3>
+				<h3><b>Login to enjoy more functions like: recipe recommendation, calculate food calories and record food intake!</b></h3>
 				<p style = "margin-left:370px; margin-right:370px;">
 					SNACKKR is a web application focusing on personal health, in particular, meal planning.
 					It gives people a sense of control in their own health and keep in shape through better acknowledgment of their diet. 
@@ -63,3 +59,5 @@
 
 </body>
 </html>
+
+

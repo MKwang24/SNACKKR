@@ -5,6 +5,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
+<!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("email") == null) {
+		response.sendRedirect("login.jsp");
+	}
+%>
 <head>
 <title>MIE350 SNACCKR App - Search Results</title>
 <meta charset="utf-8">
@@ -35,7 +43,18 @@
 	%>
 
 	<%@ include file="navbar_loggedin.jsp"%>
-
+	
+	<style>
+	body{
+		background-image: url('img/71.png');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
+		
+	
 
 
 	<div class="container-fluid text-center">
@@ -105,10 +124,9 @@
 					color=red><%=request.getAttribute("id")%></font></b>":  (values based on per 100 grams of food)
 				</h3>
 					<form method="POST" action='AddController' name="frmAddUser">
-						<b>Food(ID) to Add(input 0 when resetting the list) </b><input type="text" name="ID" 
+						<b>Food(ID) to Add </b><input type="text" name="ID" 
 							value="<c:out value="${food.searchword}" />"><input
 							type="submit" class="btn btn-info" value="Add" />
-							<input type="submit" class = "btn btn-info "value="Reset" name="Reset">
 					</form>
 					<center>
 					<table border=1 class="sortable">
@@ -209,11 +227,12 @@
 		</div>
 		</div>
 	</div>
-
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	<%@ include file="footer.jsp"%>
 
 
 </body>
 </html>
+
 
 

@@ -3,6 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
+<!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("email") == null) {
+		response.sendRedirect("login.jsp");
+	}
+%>
 <head>
 <title>MIE350 SNACKKR Web App</title>
 <meta charset="utf-8">
@@ -34,6 +42,15 @@
 	%>
 
 	<%@ include file="navbar_loggedin.jsp"%>
+	<style>
+	body{
+		background-image: url('img/40.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
 	
 	<div class="container-fluid text-center">
 		<div class="row content">
@@ -45,19 +62,21 @@
 				<input type = "checkbox" name = "Patients" value = "Patients" > Patients<br>
 				<input type = "checkbox" name = "Teenagers" value = "Teenagers" > Teenagers<br>
 				<input type = "checkbox" name = "Adults" value = "Adults" > Adults<br>
-				<input type = "checkbox" name = "Seniors" value = "Senior" > Seniors<br>
+				<input type = "checkbox" name = "Senior" value = "Senior" > Seniors<br>
 				<input type = "checkbox" name = "Athletes" value = "Athletes" > Athletes<br>
+				<br />
+				<input type = "submit" class="btn btn-info" value="Enter">
 				<br />
 			</form>
 			</fieldset>
 			</h3>
-			<li><a href = "recipeAfterRecommend.jsp">Enter</a></li>
 			</div>
 		</div>
 	</div>
 
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<%@ include file="footer.jsp"%>
 
 </body>
 </html>
+

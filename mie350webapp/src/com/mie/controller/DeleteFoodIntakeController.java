@@ -1,0 +1,79 @@
+package com.mie.controller;
+
+import java.io.IOException;
+import java.sql.Date;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mie.dao.IntakeDao;
+import com.mie.model.Intake;
+
+public class DeleteFoodIntakeController extends HttpServlet{
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, java.io.IOException {
+		System.out.println("\nRecord Foods");
+		/**
+		 * Retrieve the entered username and password from the login.jsp form.
+		 */
+		Intake intake = new Intake();
+		intake.setEmail(request.getParameter("e"));
+		intake.setDate(Date.valueOf(request.getParameter("d")));
+		intake.setMeal(request.getParameter("m"));
+		System.out.print(intake);
+		try {
+			/**
+			 * Try to see if the member can log in.
+			 */
+				System.out.print("Try add intake");
+				boolean result = IntakeDao.deleteIntake(intake);
+				String email = request.getParameter("e");
+				System.out.print("\n"+result);
+		
+			  
+
+			/**
+			 * If the isValid value is true, assign session attributes to the
+			 * current member.
+			 */
+			if (result) {
+
+				HttpSession session = request.getSession(true);
+	
+//				session.setAttribute("currentSessionmember", member);
+//				session.setAttribute("email", member.getEmail());
+//				session.setAttribute("firstname", member.getFirstName());
+//				session.setAttribute("lastname", member.getLastName());
+				
+				/**
+				 * Redirect to the members-only home page.
+				 */
+				System.out.println("to: homepage.jsp ;");
+				response.sendRedirect("intakeResult.jsp");
+				System.out.println("\n after: homepage.jsp ;");
+
+			}
+
+			else {
+				/**
+				 * Otherwise, redirect the user to the invalid login page and
+				 * ask them to log in again with the proper credentials.
+				 */
+				
+				response.sendRedirect("intakeResultError.jsp");
+			}
+		}
+
+		catch (Throwable theException) {
+			/**
+			 * Print out any errors.
+			 */
+			System.out.println(theException);
+		}
+	}
+}

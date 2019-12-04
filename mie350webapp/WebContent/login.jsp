@@ -26,6 +26,15 @@
 <body>
 
 	<%@ include file="navbar.jsp"%>
+	<style>
+	body{
+		background-image: url('img/45.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
 
 	<div class="container-fluid text-center">
 			<div class="col-sm-12 text-left">
@@ -39,7 +48,7 @@
 
 				</form>
 				<br /> 
-				<b>Do not have an account? Create one right now to enjoy our food and recipe recommendation!</b>
+				<b>Do not have an account? Create one right now to enjoy our recipe recommendation and food intake recording!</b>
 				<ul>
 					<li><a href="createAccount.jsp">Click here to create an account</a></li>
 				</ul>
@@ -49,8 +58,10 @@
 			
 		
 	</div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<%@ include file="footer.jsp"%>
 
 </body>
 </html>
+
+

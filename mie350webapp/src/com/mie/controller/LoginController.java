@@ -50,15 +50,15 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("yob", String.valueOf(member.getYearofBirth()));
 				session.setAttribute("psw", member.getPassword());
 				session.setAttribute("sex", member.getsex());
-				session.setAttribute("healthcon", member.gethealthcondition());
+				session.setAttribute("Hc", member.gethealthcondition());
 				session.setAttribute("height", String.valueOf(member.getheight()));
 				session.setAttribute("weight", String.valueOf(member.getweight()));
-				session.setAttribute("obj", member.getobjectives());
+				session.setAttribute("o", member.getobjectives());
 				/**
 				 * Redirect to the members-only home page.
 				 */
 				
-				response.sendRedirect("memberLogged.jsp");
+				response.sendRedirect("index_logged.jsp");
 				
 
 				/**

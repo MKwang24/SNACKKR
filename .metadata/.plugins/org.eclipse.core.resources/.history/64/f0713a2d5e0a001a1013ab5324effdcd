@@ -1,5 +1,0 @@
-driver=net.ucanaccess.jdbc.UcanaccessDriver
-#url=jdbc:ucanaccess://W:\\MIE350Proj\\MIE350_SNACKKR\\mie350webapp\\src\\db\\mie350_webapp_database.mdb
-url=jdbc:ucanaccess://W:\\MIE350_2nd\\MIE350_SNACKKR\\mie350webapp\\src\\db\\SNACKKR.accdb
-user=
-password=

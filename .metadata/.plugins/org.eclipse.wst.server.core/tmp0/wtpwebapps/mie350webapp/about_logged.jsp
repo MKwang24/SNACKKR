@@ -3,6 +3,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
+<!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("email") == null) {
+		response.sendRedirect("login.jsp");
+	}
+%>
+
 <head>
 <title>MIE350 Sample Web App - About</title>
 <meta charset="utf-8">
@@ -47,8 +56,16 @@
 				<h4 style = "margin-left:80px; margin-right:80px;">
 				This web application is built for MIE350 project, and the team does not make any warranties about the completeness, reliability and accuracy of the information provided. 
 				Any action you take upon the information on this website is strictly at the user¡¯s own risk, 
-				and the team will not be liable for any losses and damages in connection with the use of the website.
+				and the team will not be liable for any losses and damages in connection with the use of the website. <hr />
+				The software and tools used in the project include: 
+				<br /><br>
+				<li>Java and JDBC as the backend programming language</li><br>
+				<li>HTML, CSS AND JSP as the frontend programming language</li><br>
+				<li>Tomcat Server v7.0 as the backend web server</li><br>
+				<li>Datasets used in the project is employed from the Kaggle. </li><br> 
+				
 				</h4>
+				
 				<center>
 					<img src = "img/IMG_0186.jpg" alt = "Team Member" width = 100%>
 				</center>
@@ -57,6 +74,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<%@ include file="footer.jsp"%>
 

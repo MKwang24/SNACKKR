@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mie.model.Food;
-import com.mie.model.Student;
 import com.mie.util.DbUtil;
 
 public class FoodDao {
@@ -151,6 +150,7 @@ public class FoodDao {
 				food.setWater(rs.getInt("Water(g)"));
 				foods.add(food);
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -39,8 +39,16 @@
 				<h4 style = "margin-left:80px; margin-right:80px;">
 				This web application is built for MIE350 project, and the team does not make any warranties about the completeness, reliability and accuracy of the information provided. 
 				Any action you take upon the information on this website is strictly at the user¡¯s own risk, 
-				and the team will not be liable for any losses and damages in connection with the use of the website.
+				and the team will not be liable for any losses and damages in connection with the use of the website. <hr />
+				The software and tools used in the project include: 
+				<br /><br>
+				<li>Java and JDBC as the backend programming language</li><br>
+				<li>HTML, CSS AND JSP as the frontend programming language</li><br>
+				<li>Tomcat Server v7.0 as the backend web server</li><br>
+				<li>Datasets used in the project is employed from the Kaggle. </li><br> 
+				
 				</h4>
+				
 				<center>
 					<img src = "img/IMG_0186.jpg" alt = "Team Member" width = 100%>
 				</center>

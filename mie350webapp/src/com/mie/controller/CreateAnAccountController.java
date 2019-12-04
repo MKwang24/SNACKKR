@@ -1,6 +1,9 @@
 package com.mie.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +24,7 @@ public class CreateAnAccountController extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, java.io.IOException {
+		try {
 		System.out.println("\n create an account");
 		/**
 		 * Retrieve the entered username and password from the login.jsp form.
@@ -35,10 +39,27 @@ public class CreateAnAccountController extends HttpServlet {
 		member.setsex(request.getParameter("sex"));
 		member.setheight(Integer.valueOf(request.getParameter("h")));
 		member.setweight(Integer.valueOf(request.getParameter("w")));
-		member.setobjectives(request.getParameter("o"));
 		member.sethealthcondition(request.getParameter("Hc"));
-		System.out.print(member);
-		try {
+		List obj = new ArrayList<String>();
+		//Patients=1, Teenagers=2, Adults=3, Senior=4, Athletes=5
+		
+		if (request.getParameter("Lose_Weight") != null){
+			obj.add("Lose_Weight");
+		}
+		if (request.getParameter("Gain_Muscle") != null){
+			obj.add("Gain_Muscle");
+		}
+		if (request.getParameter("Keep_Health") != null){
+			obj.add("Keep_Healthy");
+		}
+		String objString = obj.toString().replaceAll(" ", "");
+
+
+		member.setobjectives(objString);
+		System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+		System.out.print(objString);
+		
+		System.out.println("hiiiiiii");
 			/**
 			 * Try to see if the member can log in.
 			 */
@@ -56,6 +77,7 @@ public class CreateAnAccountController extends HttpServlet {
 				session.setAttribute("email", member.getEmail());
 				session.setAttribute("firstname", member.getFirstName());
 				session.setAttribute("lastname", member.getLastName());
+
 				/**
 				 * Redirect to the members-only home page.
 				 */
@@ -74,10 +96,11 @@ public class CreateAnAccountController extends HttpServlet {
 			}
 		}
 
-		catch (Throwable theException) {
+		catch (NumberFormatException theException) {
 			/**
 			 * Print out any errors.
 			 */
+			response.sendRedirect("Error.jsp");
 			System.out.println(theException);
 		}
 	}

@@ -26,6 +26,16 @@
 <body>
 
 	<%@ include file="navbar.jsp"%>
+	<style>
+	body{
+		background-image: url('img/93.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
+	
 	<div class="container-fluid text-center">
 			<div class="row content">
 				<div class="col-sm-12 text-left">
@@ -52,9 +62,18 @@
 					<br />
 					Weight (in kg): <br /><input type = "text" name = "w" required/><br>
 					<br />
-					Health Condition:<br /><input type = "text" size = 100 maxlength = 90 name = "Hc" required /><br>
+					Health Condition:<br />
+					<input type = "radio" name = "Hc" value = "Normal" > Normal<br>
+					<input type = "radio" name = "Hc" value = "Underweight" > Underweight<br>
+					<input type = "radio" name = "Hc" value = "Slightly_Overweight" > Slightly Overweight<br>
+					<input type = "radio" name = "Hc" value = "Overweight" > Overweight<br>
 					<br />
-					Objectives: <br /><input type = "text" size = 100 maxlength = 90 name = "o" required/><br>
+					Objectives: <br />
+					<input type = "checkbox" name = "Lose_Weight" value = "Lose_Weight" > Lose Weight<br>
+					<input type = "checkbox" name = "Gain_Muscle" value = "Gain_Muscle" > Gain Muscle<br>
+					<input type = "checkbox" name = "Keep_Health" value = "Keep_Health" > Keep Health<br>
+					<br />
+				
 					<span style = "color: red;"><b>You must fill in all parts here!</b></span>
 					<br /><input type="submit"class="btn btn-info" value="Submit">
 				</form>

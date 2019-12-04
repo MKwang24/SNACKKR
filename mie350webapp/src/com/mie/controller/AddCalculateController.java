@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mie.dao.FoodDao;
-import com.mie.dao.StudentDao;
-import com.mie.model.Student;
+import com.mie.model.Food;
+
 
 public class AddCalculateController extends HttpServlet {
 	/**
@@ -30,7 +31,9 @@ public class AddCalculateController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 2L;
 	private static String SEARCH_USER = "/CalculateResult.jsp";
+	private static String SEARCH_USER_2 = "/CalculateResultError.jsp";
 	private FoodDao dao;
+	private static RequestDispatcher view = null;
 
 	/**
 	 * Constructor for this class.
@@ -47,11 +50,31 @@ public class AddCalculateController extends HttpServlet {
 		 * the user.
 		 */
 		String keyword = request.getParameter("keyword");
-		RequestDispatcher view = request.getRequestDispatcher(SEARCH_USER);
+		//RequestDispatcher view = request.getRequestDispatcher(SEARCH_USER);
 
 		request.setAttribute("keyword", keyword);
 
 		request.setAttribute("foods", dao.getFoodByKeyword(keyword));
+		List<Food> l =  dao.getFoodByKeyword(keyword);
+		boolean r = l.isEmpty();
+		String r_string = String.valueOf(r);
+		request.setAttribute("empty", r_string);
+		Integer size = l.size();
+		String size_str = String.valueOf(size);
+		request.setAttribute("size", size_str);
+		if (l.size() == 0) {
+			view = request.getRequestDispatcher(SEARCH_USER_2);
+//			String s ="No such food in the dataset.";
+//////			System.out.print(s);
+//			request.setAttribute("empty", s);
+		} else {
+			view = request.getRequestDispatcher(SEARCH_USER);
+		}
+//		}else {
+//			String s =" ";
+//			request.setAttribute("empty", s);
+//		}
+//		
 		//Check 
 //		System.out.println(request.getAttribute("Food"));
 //		System.out.println(dao.getFoodByKeyword(keyword));

@@ -26,6 +26,16 @@
 <body>
 
 	<%@ include file="navbar.jsp"%>
+	<style>
+	body{
+		background-image: url('img/45.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
+	
 
 	<div class="container-fluid text-center">
 			<div class="col-sm-12 text-left">
@@ -50,7 +60,7 @@
 			
 				<!-- You can put right sidebar links here if you want to. -->
 	</div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<%@ include file="footer.jsp"%>
 
 </body>

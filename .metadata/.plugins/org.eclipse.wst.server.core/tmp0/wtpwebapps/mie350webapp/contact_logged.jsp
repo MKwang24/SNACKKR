@@ -3,6 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
+<!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("email") == null) {
+		response.sendRedirect("login.jsp");
+	}
+%>
 <head>
 <title>MIE350 Sample Web App - Contact</title>
 <meta charset="utf-8">
@@ -39,10 +47,23 @@
 		<div class="row content">
 			<div class="col-sm-12 text-left">
 				<h1>Contact</h1>
-				If you run into any issues with exploring this web,
-				please contact SNACKKR group members listed below. <br /> <br />
+				<h4>If you run into any issues with exploring this web,
+				please contact SNACKKR group members listed below.</h4><br />
+				<h4>
+				<b>Manager:</b><br /> <br />
+				Mingkun Wang: mingkunkev.wang@mail.utoronto.ca <br /><br /><br />
+				
+				<b>Member:</b><br /> <br />
+				Sijia Li: sijianancy.li@mail.utoronto.ca <br /> <br />
+				Jiahua Chen: amandaaa.chen@mail.utoronto.ca<br /> <br />
+				Jiaru Li: kellyjiaru.li@mail.utoronto.ca<br /> <br />
+				Keying Chen: keying.chen@mail.utoronto.ca<br /> <br />
+				Ruiyang Li: ruiyang.li@mail.utoronto.ca<br /> <br />
+				Yichun Guan: yichun.guan@mail.utoronto.ca
+				
+				</h4>
 				<center>
-					<img src="img/discussion_board.jpg" width="80%">
+					<img src = "img/IMG_0186.jpg" alt = "Team Member" width = 100%>
 				</center>
 				<br />
 				<br />
@@ -50,8 +71,12 @@
 		</div>
 	</div>
 
+
 	<%@ include file="footer.jsp"%>
 
 
 </body>
 </html>
+
+
+

@@ -41,23 +41,24 @@ public class AddController extends HttpServlet {
 		dao = new FoodDao();
 	}
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException,NumberFormatException {
 		/**
 		 * This method handles the retrieval of the search keyword entered by
 		 * the user.
-		 */
+		 */try {
 	       String button = request.getParameter("Reset");
 	       String sid = request.getParameter("ID");
 	       int id = Integer.parseInt(sid);
+	       foodlist.add(dao.getFoodById(id));
+	       request.setAttribute("ID", id);
+	       request.setAttribute("Addedfoods", foodlist);
+	       request.setAttribute("SUM", dao.getSumFoodList(foodlist));
 	       if (button !=null){
 	    	   foodlist.clear();
 	       }
         
 		RequestDispatcher view = request.getRequestDispatcher(SEARCH_USER);
-		foodlist.add(dao.getFoodById(id));
-		request.setAttribute("ID", id);
-		request.setAttribute("Addedfoods", foodlist);
-		request.setAttribute("SUM", dao.getSumFoodList(foodlist));
+
 		//Check 
 
 		//The value is successfully retrieved. 
@@ -68,6 +69,12 @@ public class AddController extends HttpServlet {
 
 		view.forward(request, response);
 	}
-
-
+		 catch (Throwable theException) {
+				/**
+				 * Print out any errors.
+				 */
+				response.sendRedirect("Error.jsp");
+				System.out.println(theException);
+			}
+	}
 }

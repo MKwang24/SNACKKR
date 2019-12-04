@@ -13,9 +13,8 @@
 				<li><a href="index_logged.jsp"><b>Home</b></a></li>
 				<li><a href="about_logged.jsp"><b>About</b></a></li>
 				<li><a href="CalculateFood.jsp"><b>Search Food & Calculate</b></a></li>
-				<li><a href="foodRecommend.jsp"><b>Food Recommendation</b></a></li>
-				<li><a href="searchARecipe.jsp"><b>Search A Recipe & Calculate</b></a></li>
 				<li><a href="recipeRecommend.jsp"><b>Recipes Recommendation</b></a></li>
+				<li><a href="RecordFoodIntake.jsp"><b>Record Food Intake</b></a>
 				<li><a href="contact_logged.jsp"><b>Contact</b></a></li>
 			</ul>
 			<!-- The following code can be added to include a Login button to the right-hand side of the navbar-->
@@ -31,3 +30,5 @@
 		</div>
 	</div>
 </nav>
+
+

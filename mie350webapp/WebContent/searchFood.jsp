@@ -28,6 +28,16 @@
 <body>
 
 	<%@ include file="navbar.jsp"%>
+	<style>
+	body{
+		background-image: url('img/46.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
+
 
 	<%
 		Member member = (Member) session.getAttribute("currentSessionUser");
@@ -38,10 +48,7 @@
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
-			<div class="col-sm-8 text-left">
+			<div class="col-sm-12 text-center">
 				<h1>Search Your Food</h1>
 				Type in any keyword to search for food information (Food Name) that matches the keyword. <Br />
 				<Br />
@@ -54,14 +61,13 @@
 				</center>
 
 			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
-			</div>
 		</div>
 	</div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<%@ include file="footer.jsp"%>
 
 
 </body>
 </html>
+
+

@@ -5,6 +5,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
+<!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("email") == null) {
+		response.sendRedirect("login.jsp");
+	}
+%>
 <head>
 <title>SNACCKR - Search Food</title>
 <meta charset="utf-8">
@@ -35,15 +43,21 @@
 	%>
 
 	<%@ include file="navbar_loggedin.jsp"%>
+	<style>
+	body{
+		background-image: url('img/46.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
 
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-			</div>
-			<div class="col-sm-8 text-left">
-				<h1>Search A Food</h1>
+			<div class="col-sm-12 text-center">
+				<h1>Search Food</h1>
 				Type in any keyword to search for food information (Food Name) that matches the keyword. <Br />
 				<Br />
 				<center>
@@ -55,14 +69,16 @@
 				</center>
 
 			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
-			</div>
 		</div>
 	</div>
+	<br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 	<%@ include file="footer.jsp"%>
 
 
 </body>
 </html>
+
+
+

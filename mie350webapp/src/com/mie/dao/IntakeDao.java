@@ -1,0 +1,93 @@
+package com.mie.dao;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mie.model.Intake;
+import com.mie.util.DbUtil;
+
+public class IntakeDao {
+	
+	static Connection currentCon = null;
+	static ResultSet rs = null;
+	
+	public static boolean addIntake(Intake intake) {
+		/**
+		 * This method adds a new student to the database.
+		 */
+		System.out.print(intake.toString() + intake.getDate() + "\n");
+		boolean result = true;
+		try {
+			System.out.print("try db connection \n");
+			currentCon = DbUtil.getConnection();
+			System.out.print("Connected\n");
+			PreparedStatement preparedStatement = currentCon
+					.prepareStatement("INSERT INTO UserFoodRecord (Email, DateofIntake, Meal, Food) VALUES (?, ?, ?, ?)");
+			// Parameters start with 1
+			preparedStatement.setString(1, intake.getEmail());
+			preparedStatement.setDate(2, (Date) intake.getDate());
+			preparedStatement.setString(3, intake.getMeal());
+			preparedStatement.setString(4, intake.getFoods());
+			preparedStatement.executeUpdate();
+			System.out.print("connected");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+			System.out.print("connection failed");
+		}
+		return result;
+	}
+	public static boolean deleteIntake(Intake intake){
+		System.out.print(intake.toString() + "\n");
+		boolean result = true;
+		try {
+			currentCon = DbUtil.getConnection();
+			PreparedStatement preparedStatement = currentCon
+					.prepareStatement("DELETE FROM UserFoodRecord WHERE Email = ? AND DateofIntake = ? AND Meal = ? ");
+			// Parameters start with 1
+			preparedStatement.setString(1, intake.getEmail());
+			preparedStatement.setDate(2, (Date) intake.getDate());
+			preparedStatement.setString(3, intake.getMeal());
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		return result;
+	}
+	public List<Intake> getIntakeByEmail(String email) {
+		List<Intake> intakes = new ArrayList<Intake>();
+		
+		try {
+			currentCon = DbUtil.getConnection();
+			PreparedStatement preparedStatement =currentCon.prepareStatement("SELECT * FROM UserFoodRecord WHERE Email = ?");
+			preparedStatement.setString(1,email);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				System.out.println("success rs.next() in IntakeDao");
+				Intake intake = new Intake();
+				intake.setEmail(rs.getString("Email"));
+				intake.setDate(rs.getDate("DateofIntake"));
+				intake.setMeal(rs.getString("Meal"));
+				intake.setFoods(rs.getString("Food"));
+				
+				intakes.add(intake);
+			}
+		}  catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return intakes;
+	}
+}
+	
+	
+
+
+

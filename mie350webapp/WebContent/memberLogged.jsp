@@ -47,16 +47,28 @@
 		String sex = (String) session.getAttribute("sex");
 		String height = (String) session.getAttribute("height");
 		String weight = (String) session.getAttribute("weight");
-		String health = (String) session.getAttribute("healthcon");
-		String objective = (String) session.getAttribute("obj");
+		String health = (String) session.getAttribute("Hc");
+		String objective = (String) session.getAttribute("o");
+		Double height_c = Double.valueOf(height);
+		Double weight_c = Double.valueOf(weight);
+		Double bmi_c = weight_c/((height_c/100)*(height_c/100));
+		String bmi = String.valueOf(bmi_c);
 		
 	%>
 	<%@ include file="navbar_loggedin.jsp"%>
+	<style>
+	body{
+		background-image: url('img/91.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		
+	}
+	</style>
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<%@ include file="sidebar_loggedin.jsp"%>
-			<div class="col-sm-10 text-left">
+			<div class="col-sm-12 text-center">
 
 				<h1><i>
 					Welcome,
@@ -90,9 +102,12 @@
 					<br />
 					Weight (in kg): <br /><input type = "text" name = "w" value = <%=weight %> readonly /><br>
 					<br />
-					Health Condition: <br /><input type = "text" size = 100 maxlength = 90 name = "Hc" value = <%=health %> readonly /><br>
+					BMI : <a href="img/BMI.jpg" target="_blank" onclick="window.open(this.href,'','width=256,height=180');return false"/>see BMI chart to compare</a></li>
+					<br /><input type = "text" name = "bmi" value = <%=bmi %> readonly /><br>
 					<br />
-					Objectives: <br /><input type = "text" size = 100 maxlength = 90 name = "o" value = <%=objective %> readonly /><br>
+					Health Condition: <br /><input type = "text" name = "Hc" value = <%=health %> readonly /><br>
+					<br />
+					Objectives: <br /><input type = "text" name = "o" value = <%=objective %> readonly /><br>
 
 				</form>
 				
@@ -109,3 +124,5 @@
 
 </body>
 </html>
+
+

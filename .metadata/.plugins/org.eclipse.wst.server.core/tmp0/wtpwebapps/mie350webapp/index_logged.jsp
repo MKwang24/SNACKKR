@@ -3,6 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
+<!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("email") == null) {
+		response.sendRedirect("login.jsp");
+	}
+%>
 <head>
 <title>MIE350 SNACKKR Web App</title>
 <meta charset="utf-8">
@@ -46,21 +54,18 @@
 					<a href = "about.jsp">
 						<img src = "img/about.jpg" alt = "about" width = 20%>
 					</a>
-					<a href = "searchFood.jsp">
+					<a href = "CalculateFood.jsp">
 						<img src = "img/searchfood.jpg" alt = "search food" width = 20%>
-					</a>
-					<a href = "foodRecommend.jsp">
-						<img src = "img/recomfood.jpg" alt = "food recommendation" width = 20%>
-					</a>
-					<br />
-					<a href = "contact.jsp">
-						<img src = "img/contact.jpg" alt = "contact" width = 20%>
-					</a>
-					<a href = "searchArecipe.jsp">
-						<img src = "img/searchrecipes.jpg" alt = "search a recipe" width = 20%>
 					</a>
 					<a href = "recipeRecommend.jsp">
 						<img src = "img/recomrecipe.jpg" alt = "recipe recommendation" width = 20%>
+					</a>
+					<br />
+					<a href = "RecordFoodIntake.jsp">
+						<img src = "img/foodintake.jpg" alt = "record food intake" width = 20%>
+					</a>
+					<a href = "contact.jsp">
+						<img src = "img/contact.jpg" alt = "contact" width = 20%>
 					</a>
 				<h3><b>We are ready to help you with healthy diet!</b></h3>
 			</div>
@@ -72,3 +77,5 @@
 
 </body>
 </html>
+
+
